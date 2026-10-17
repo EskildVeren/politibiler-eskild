@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import no.eskildveren.policecars.model.PoliceCar;
+
 @Service
 public class PoliceCarService {
 
@@ -29,6 +31,7 @@ public class PoliceCarService {
     }
 
     public void addPoliceCars(List<PoliceCar> policeCars) {
+
         policeCarRepository.saveAll(policeCars);
     }
 }
