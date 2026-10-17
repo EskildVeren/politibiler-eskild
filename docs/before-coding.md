@@ -8,7 +8,7 @@ I will need some sort of data storage in order to have complete functinality wit
 
 ## Technology
 
-I want to create the application using Java with Spring Boot. This is because I have some knowledge with the framework, and that I like building things with it. For the databse, I will use SQLite, as it is easy to set up and fits the purpose of a case task. I would not use that database in a production scenario of this appliction. Claude will be used for coding setup and coding assistance, though I will write most code by hand to show what I know, rather than what Claude knows. 
+I want to create the application using Java with Spring Boot. This is because I have some knowledge with the framework, and that I like building things with it. For the databse, I will use SQLite, as it is easy to set up and fits the purpose of a case task. I would not use that database in a production scenario of this appliction. Claude will be used for coding setup and coding assistance, though I will write most code by hand to show what I know, rather than what Claude knows. Docker will be added in order to make setup more reliable. This should help prevent technical issues during the presentation. 
 
 ## Testing
 
