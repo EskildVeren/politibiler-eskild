@@ -1,5 +1,7 @@
 package no.eskildveren.policecars.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -7,13 +9,16 @@ import jakarta.persistence.Id;
 public class PoliceCar {
 
     @Id
-    String id;
-    String merke;
-    String modell;
-    String årsmodell;
-    String regNr;
-    String status;
-    String oppdrag;
+    private String id;
+    private String merke;
+    private String modell;
+
+    @JsonProperty("årsmodell")
+    private Integer aarsmodell;
+
+    private String regNr;
+    private String status;
+    private String oppdrag;
 
     public PoliceCar() {
     }
@@ -42,12 +47,12 @@ public class PoliceCar {
         this.modell = modell;
     }
 
-    public String getÅrsmodell() {
-        return årsmodell;
+    public Integer getAarsmodell() {
+        return aarsmodell;
     }
 
-    public void setÅrsmodell(String årsmodell) {
-        this.årsmodell = årsmodell;
+    public void setAarsmodell(Integer årsmodell) {
+        this.aarsmodell = årsmodell;
     }
 
     public String getRegNr() {
@@ -72,10 +77,5 @@ public class PoliceCar {
 
     public void setOppdrag(String oppdrag) {
         this.oppdrag = oppdrag;
-    }
-
-    @Override
-    public String toString() {
-        return "Politibil: " + merke + ", " + modell + ", " + id + ";";
     }
 }
