@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import no.eskildveren.policecars.model.PoliceCar;
@@ -36,10 +35,12 @@ public class PoliceCarController {
      * @return all policecars matching status
      */
     @GetMapping("/")
-    public ResponseEntity<List<PoliceCar>> getAvailiblePoliceCars(@RequestParam(required = true) String status) {
-        if (status != "Tilgjengelig")
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-        return new ResponseEntity<>(service.getAvailablePoliceCars(status), HttpStatus.OK);
+    public ResponseEntity<List<PoliceCar>> getAvailiblePoliceCars() {// @RequestParam(required = true) String status) {
+        // if (status != "Tilgjengelig")
+        // return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        // return new ResponseEntity<>(service.getAvailablePoliceCars(status),
+        // HttpStatus.OK);
+        return new ResponseEntity<>(service.getAvailablePoliceCars("Tilgjengelig"), HttpStatus.OK);
 
     }
 

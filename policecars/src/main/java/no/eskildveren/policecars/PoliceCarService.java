@@ -21,8 +21,8 @@ public class PoliceCarService {
         return policeCarRepository
                 .findAll()
                 .stream()
-                .filter((pc) -> pc.status().equals(status))
-                .sorted((pc1, pc2) -> pc2.id().compareTo(pc1.id()))
+                .filter((pc) -> pc.getStatus().equals(status))
+                .sorted((pc1, pc2) -> pc2.getId().compareTo(pc1.getId()))
                 .toList();
     }
 
