@@ -22,7 +22,7 @@ public class PoliceCarService {
                 .findAll()
                 .stream()
                 .filter((pc) -> pc.getStatus().equals(status))
-                .sorted((pc1, pc2) -> pc2.getId().compareTo(pc1.getId()))
+                .sorted((pc1, pc2) -> Integer.valueOf(pc1.getId()) - Integer.valueOf(pc2.getId()))
                 .toList();
     }
 
