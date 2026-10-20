@@ -23,6 +23,17 @@ public class PoliceCar {
     public PoliceCar() {
     }
 
+    public PoliceCar(String id, String merke, String modell, Integer aarsmodell, String regNr, String status,
+            String oppdrag) {
+        this.id = id;
+        this.merke = merke;
+        this.modell = modell;
+        this.aarsmodell = aarsmodell;
+        this.regNr = regNr;
+        this.status = status;
+        this.oppdrag = oppdrag;
+    }
+
     public String getId() {
         return id;
     }
