@@ -47,6 +47,17 @@ public class PoliceCarControllerTest {
     }
 
     @Test
+    void returnsOkWhenNoCarHasStatusTilgjengelig() throws Exception {
+        when(service.getAvailablePoliceCars("Tilgjengelig")).thenReturn(List.of());
+
+        mvc.perform(get("/politibiler/").param("status", "Tilgjengelig"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()").value(0));
+
+        verify(service).getAvailablePoliceCars("Tilgjengelig");
+    }
+
+    @Test
     void returns403ForUnauthorizedStatus() throws Exception {
         mvc.perform(get("/politibiler/").param("status", "i Oppdrag"))
                 .andExpect(status().isForbidden())
@@ -82,5 +93,15 @@ public class PoliceCarControllerTest {
                 .andExpect(content().string(""));
 
         verify(service).getPoliceCarById("1");
+    }
+
+    @Test
+    void updatesExistingPoliceCar() throws Exception {
+
+    }
+
+    @Test
+    void returns404WhenIdNotFound() throws Exception {
+
     }
 }
