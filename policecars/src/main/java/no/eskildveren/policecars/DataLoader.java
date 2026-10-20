@@ -1,6 +1,6 @@
 package no.eskildveren.policecars;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
@@ -15,15 +15,17 @@ import no.eskildveren.policecars.model.PoliceCarResponse;
 @Component
 public class DataLoader implements CommandLineRunner {
 
-    @Autowired
-    PoliceCarRepository repository;
+    private final PoliceCarRepository repository;
+    private final RestClient restClient;
 
-    RestClient restClient = RestClient.builder().baseUrl("https://erikrolspo.github.io").build();
+    public DataLoader(PoliceCarRepository repository, RestClient.Builder builder, @Value("${api.url}") String URL) {
+        this.repository = repository;
+        this.restClient = builder.baseUrl(URL).build();
+    }
 
     @Override
     public void run(String... args) throws Exception {
         if (repository.count() != 0) {
-            System.out.println("Database already seeded, skip seeding");
             return;
         }
 
@@ -33,7 +35,6 @@ public class DataLoader implements CommandLineRunner {
         if (policeCars != null) {
             policeCars.biler().stream().forEach((p) -> System.out.println(p));
             repository.saveAll(policeCars.biler());
-            System.out.println(policeCars.biler().size() + " police cars added to database");
         }
     }
 }
