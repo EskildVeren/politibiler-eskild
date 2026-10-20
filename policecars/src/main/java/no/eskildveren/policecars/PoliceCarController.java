@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import no.eskildveren.policecars.model.PoliceCar;
@@ -31,17 +32,19 @@ public class PoliceCarController {
      * Due to the specifications of the task, only the cars with status
      * "Tilgjengelig" is available from this http endpoint
      * 
+     * Locally it will be reachable from
+     * http://localhost:8080/politibiler/?status=Tilgjengelig
+     * 
      * @param status the status of the police car
      * @return all policecars matching status
      */
     @GetMapping("/")
-    public ResponseEntity<List<PoliceCar>> getAvailiblePoliceCars() {// @RequestParam(required = true) String status) {
-        // if (status != "Tilgjengelig")
-        // return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-        // return new ResponseEntity<>(service.getAvailablePoliceCars(status),
-        // HttpStatus.OK);
-        return new ResponseEntity<>(service.getAvailablePoliceCars("Tilgjengelig"), HttpStatus.OK);
+    public ResponseEntity<List<PoliceCar>> getAvailiblePoliceCars(@RequestParam(required = true) String status) {
+        if (!"Tilgjengelig".equals(status))
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 
+        return new ResponseEntity<>(service.getAvailablePoliceCars(status),
+                HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
