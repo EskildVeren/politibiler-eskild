@@ -38,9 +38,19 @@ With the body below. Remember to swithc out newMission and newStatus with the ne
     "status": "newStatus"
 }
 
-## Technology
+## Work methodology
 
-The system uses Spring Boot and is coded in Java. Java with Spring Boot is chosen, as it is my preferred way of building backend systems. The database of choice is SQLite. This was due to the simple nature of the database, and that there was little work to set it up. In a production scenario I would probably not use SQLite, but I think it is perfect for this case. 
+I started by thoroughly reading the task and making up my mind regarding how to approach the task. This process is described in the [before-coding document](docs/before-coding.md). I had created simple systems like this one in Spring Boot before, and knew it would require a Controller describing the system interface, a service handling the controllers needs, and the repository acting as the middleman between the database and the rest of the system. I wanted to use SQLite as it is simple has minimal setup, making it suitable for a small system for a job interview. The system would also need a class to retrieve data from the dummy api-endpoint. This is the DataLoader class. The architecture of the system is shown below. The diagram type is not the best, but I think it does an ok job of showcasing the system. 
+
+![image](docs/diagrams/architecture.png)
+
+The police car class is shown in the diagram below. Note that the field names are in Norwegian, as the original data was in Norwegian. 
+
+![image](docs/diagrams/policeCarClass.png)
+
+I started the coding with setting up the project using Spring Initializr, and creating the classes I knew I would need. I now had a skeleton for the system. I created functionality for retrieving data first, as this would be an easy task and would help me touch up on my Spring Boot skills, as I have not used it for months. I then created the DataLoader class for retrieving dummy data. This would make me able to test the API from the rest controller using a http client. Lastly, I made the API endpoint for updating a police cars status. I also created a cors configuration, so that the API will be accessible from a website runnig in a web browser. 
+
+After most of the system was in place, I created the tests for the system. I have unit tests, which can be found in the [test folder](policecars/src/test/java/no/eskildveren/policecars/). [httpclient-testing.json](httpclient-testing.json) described the tests used by the http client, and can be tested using [Httpiness](https://github.com/bognikol/httpiness). Httpiness is far from standard, but I enjoy its simplicity compared to other tools such as Postman. For testing the cors settings, I vibe coded a website which will retrieve all available police car from the API. 
 
 ## AI Usage
 
@@ -77,10 +87,3 @@ I like to grow the folder structure naturally over time. Since the project does 
 ## Testing
 
 The application uses unit testing with Junit, with the components being mocked using Mockito. The Httpclient tool [Httpiness](https://github.com/bognikol/httpiness) was used for this purpose, and the file containing the requests is in [httpclient-testing.json](httpclient-testing.json). The [cors-test](cors-test) frontend is there to test that the CORS configuration was correctly set up. It tests that the website is able to make a request to get all available police cars. It is 100% ai generated, as I found writing it out of scope regarding what I should spend time on. 
-
-## Docs
-
-Some more documentation can be found in the [docs folder](/docs). The most interesting file is probably the [file](/docs/before-coding.md) describing the work and thoughts done before coding started. The diagrams are not the best suited for the job, but I think they will make it easier to discuss the system. 
-
-![image](docs/diagrams/architecture.png)
-![image](docs/diagrams/policeCarClass.png)
