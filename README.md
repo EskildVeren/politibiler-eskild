@@ -40,4 +40,10 @@ I made this assumption due to there being no occurance of this in the dummy data
 
 I like to grow the folder structure naturally over time. Since the project does not have a lot of classes, I have not created a lot of folders. If I had more of one type of class, I would have created more folders. That can be seen in the model folder, which contains three classes of a similar purpose. 
 
+## Testing
+
+The application uses unit testing with Junit, with the components being mocked using Mockito. The Httpclient tool [Httpiness](https://github.com/bognikol/httpiness) was used for this purpose, and the file containing the requests is in [httpclient-testing.json](httpclient-testing.json).
+
 ## Docs
+
+Some more documentation can be found in the [docs folder](/docs). The most interesting file is probably the [file](/docs/before-coding.md) describing the work and thoughts done before coding started
