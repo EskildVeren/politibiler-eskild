@@ -60,7 +60,6 @@ public class PoliceCarController {
     @PatchMapping("/{id}")
     public ResponseEntity<Void> assignMission(@PathVariable String id,
             @RequestBody PoliceCarUpdate update) {
-        System.out.println("OPPDRAG: " + update.oppdrag());
         if (update.oppdrag() == null)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         service.assignPoliceCarMission(id, update);
