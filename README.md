@@ -2,7 +2,41 @@
 
 Due to the context of this task, this README assumes the reader knows Norwegian. 
 
+## Requirements
+
+The application requires JDK 21 installed in order to run
+
 ## Getting started
+
+
+Enter the policecars folder  
+`cd policecars`  
+
+Install system dependencies  
+`mvn clean install`  
+
+Run the Spring Boot application  
+`mvn spring-boot:run`
+
+## API
+
+### Retrieving all available police cars
+
+http://localhost:8080/politibiler?status=Tilgjengelig
+
+### Retrieving police car by id
+
+http://localhost:8080/politibiler/{id}
+
+### Updating mission and status for police car by id
+http://localhost:8080/politibiler/{id}
+
+With the body below. Remember to swithc out newMission and newStatus with the new police car mission and status
+
+{
+    "oppdrag": "newMission",
+    "status": "newStatus"
+}
 
 ## Technology
 
@@ -46,4 +80,7 @@ The application uses unit testing with Junit, with the components being mocked u
 
 ## Docs
 
-Some more documentation can be found in the [docs folder](/docs). The most interesting file is probably the [file](/docs/before-coding.md) describing the work and thoughts done before coding started
+Some more documentation can be found in the [docs folder](/docs). The most interesting file is probably the [file](/docs/before-coding.md) describing the work and thoughts done before coding started. The diagrams are not the best suited for the job, but I think they will make it easier to discuss the system. 
+
+![image](docs/diagrams/architecture.png)
+![image](docs/diagrams/policeCarClass.png)
