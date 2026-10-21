@@ -41,11 +41,11 @@ public class PoliceCarController {
      * @return all policecars matching status
      */
     @GetMapping("/")
-    public ResponseEntity<List<PoliceCar>> getAvailiblePoliceCars(@RequestParam(required = true) String status) {
+    public ResponseEntity<List<PoliceCar>> getPoliceCarsMatchingStatus(@RequestParam(required = true) String status) {
         if (!"Tilgjengelig".equals(status))
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 
-        return new ResponseEntity<>(service.getAvailablePoliceCars(status),
+        return new ResponseEntity<>(service.getPoliceCarsMatchingStatus(status),
                 HttpStatus.OK);
     }
 
@@ -58,7 +58,7 @@ public class PoliceCarController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<PoliceCar> assignMission(@PathVariable String id,
+    public ResponseEntity<Void> assignMission(@PathVariable String id,
             @RequestBody PoliceCarUpdate update) {
         System.out.println("OPPDRAG: " + update.oppdrag());
         if (update.oppdrag() == null)

@@ -20,7 +20,7 @@ public class PoliceCarService {
         return repository.findById(id).orElse(null);
     }
 
-    public List<PoliceCar> getAvailablePoliceCars(String status) {
+    public List<PoliceCar> getPoliceCarsMatchingStatus(String status) {
         return repository
                 .findAll()
                 .stream()
