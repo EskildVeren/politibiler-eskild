@@ -1,14 +1,20 @@
 # Politibiler
 
-A great introduction
-
 Due to the context of this task, this README assumes the reader knows Norwegian. 
 
 ## Getting started
 
+## Technology
+
+The system uses Spring Boot and is coded in Java. Java with Spring Boot is chosen, as it is my preferred way of building backend systems. The database of choice is SQLite. This was due to the simple nature of the database, and that there was little work to set it up. In a production scenario I would probably not use SQLite, but I think it is perfect for this case. 
+
 ## AI Usage
 
+Claude has been used for assitance to build this project. I asked for help when setting up the project and met confusing errors. I also needed some help to get started with the testing, as I was unsure about the syntax. 
+
 ## Assumptions
+
+These are the assumptions made when creating the project
 
 ### Choosing status when assigning a mission
 
@@ -18,8 +24,6 @@ Looking at the dummy data, the same mission (oppdrag) does not always have the s
 
 The code for the repository will mainly be in english, though for properties in the PoliceCar and PoliceCarResponse classes are in Norwegian. This is because I wanted to match the original format of the data for consistency reasons. It would be confusing if the police cars are modelled in Norwegian in most systems, while being in English in this system.
 
-### Folder structure
-
 ### Usage of Enums
 
 Enums was not used, as I lack the domain knowledge to create them. Though I think that fields such as status, oppdrag, modell and merke could use them. 
@@ -28,6 +32,12 @@ Enums was not used, as I lack the domain knowledge to create them. Though I thin
 
 This is because it matches the data from the API endpoint, and makes the system easier to develop. This is useful for the chosen method of sorting ids. 
 
-## Technology
+### Oppdrag cannot be null
+
+I made this assumption due to there being no occurance of this in the dummy data. That decision could change if I had more domain knowledge or knowledge of the system. I did not set up a lot of time philosophizing about this due to this just being a short task. 
+
+## Folder structure
+
+I like to grow the folder structure naturally over time. Since the project does not have a lot of classes, I have not created a lot of folders. If I had more of one type of class, I would have created more folders. That can be seen in the model folder, which contains three classes of a similar purpose. 
 
 ## Docs
