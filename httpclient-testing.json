@@ -17,7 +17,7 @@
       "name": "All available cars",
       "rawRequest": {
         "method": "GET",
-        "url": "http://localhost:8080/politibiler/?status=Tilgjengelig",
+        "url": "http://localhost:8080/politibiler?status=Tilgjengelig",
         "headers": [],
         "body": null
       }
@@ -38,6 +38,11 @@
           "value": "{\n\"oppdrag\": \"Fanger skurker\"\n}",
           "valueType": "Text"
         }
+      },
+      "defaultBody": {
+        "type": "Regular",
+        "value": "{\n\"oppdrag\": \"Fanger skurker\"\n}",
+        "valueType": "Text"
       }
     }
   ],

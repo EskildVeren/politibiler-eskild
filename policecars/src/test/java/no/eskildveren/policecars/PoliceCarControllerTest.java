@@ -73,7 +73,7 @@ public class PoliceCarControllerTest {
                 PoliceCar car = new PoliceCar("1", "Ford", "Focus", 2018, "DR 1234", "Tilgjengelig", "Patruljerer");
                 when(service.getPoliceCarsMatchingStatus("Tilgjengelig")).thenReturn(List.of(car));
 
-                mvc.perform(get("/politibiler/").param("status", "Tilgjengelig"))
+                mvc.perform(get("/politibiler").param("status", "Tilgjengelig"))
                                 .andExpect(status().isOk())
                                 .andExpect(jsonPath("$.length()").value(1))
                                 .andExpect(jsonPath("$[0].id").value("1"))
@@ -91,7 +91,7 @@ public class PoliceCarControllerTest {
         void returnsOkWhenNoCarHasStatusTilgjengelig() throws Exception {
                 when(service.getPoliceCarsMatchingStatus("Tilgjengelig")).thenReturn(List.of());
 
-                mvc.perform(get("/politibiler/").param("status", "Tilgjengelig"))
+                mvc.perform(get("/politibiler").param("status", "Tilgjengelig"))
                                 .andExpect(status().isOk())
                                 .andExpect(jsonPath("$.length()").value(0));
 
@@ -100,7 +100,7 @@ public class PoliceCarControllerTest {
 
         @Test
         void returns403ForUnauthorizedStatus() throws Exception {
-                mvc.perform(get("/politibiler/").param("status", "i Oppdrag"))
+                mvc.perform(get("/politibiler").param("status", "i Oppdrag"))
                                 .andExpect(status().isForbidden())
                                 .andExpect(content().string(""));
 

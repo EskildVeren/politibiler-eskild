@@ -40,7 +40,7 @@ public class PoliceCarController {
      * @param status the status of the police car
      * @return all policecars matching status
      */
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<List<PoliceCar>> getPoliceCarsMatchingStatus(@RequestParam(required = true) String status) {
         if (!"Tilgjengelig".equals(status))
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
