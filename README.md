@@ -42,7 +42,7 @@ I like to grow the folder structure naturally over time. Since the project does 
 
 ## Testing
 
-The application uses unit testing with Junit, with the components being mocked using Mockito. The Httpclient tool [Httpiness](https://github.com/bognikol/httpiness) was used for this purpose, and the file containing the requests is in [httpclient-testing.json](httpclient-testing.json).
+The application uses unit testing with Junit, with the components being mocked using Mockito. The Httpclient tool [Httpiness](https://github.com/bognikol/httpiness) was used for this purpose, and the file containing the requests is in [httpclient-testing.json](httpclient-testing.json). The [cors-test](cors-test) frontend is there to test that the CORS configuration was correctly set up. It tests that the website is able to make a request to get all available police cars. It is 100% ai generated, as I found writing it out of scope regarding what I should spend time on. 
 
 ## Docs
 
