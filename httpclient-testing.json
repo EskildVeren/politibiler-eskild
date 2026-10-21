@@ -1,0 +1,55 @@
+{
+  "collectionVersion": "httpiness/JSON/0.11",
+  "uuid": "e4072f8c-e102-481b-b040-042c0a35ee2f",
+  "authChildren": [],
+  "dirChildren": [],
+  "reqtChildren": [
+    {
+      "name": "Car by id",
+      "rawRequest": {
+        "method": "GET",
+        "url": "http://localhost:8080/politibiler/1",
+        "headers": [],
+        "body": null
+      }
+    },
+    {
+      "name": "All available cars",
+      "rawRequest": {
+        "method": "GET",
+        "url": "http://localhost:8080/politibiler/?status=Tilgjengelig",
+        "headers": [],
+        "body": null
+      }
+    },
+    {
+      "name": "Update car mission",
+      "rawRequest": {
+        "method": "PATCH",
+        "url": "http://localhost:8080/politibiler/1",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "type": "Regular",
+          "value": "{\n\"oppdrag\": \"Fanger skurker\"\n}",
+          "valueType": "Text"
+        }
+      }
+    }
+  ],
+  "parameters": {},
+  "parameterPresets": [
+    {
+      "name": "Development",
+      "macros": []
+    },
+    {
+      "name": "Production",
+      "macros": []
+    }
+  ]
+}
