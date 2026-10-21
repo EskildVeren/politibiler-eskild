@@ -65,7 +65,7 @@ public class PoliceCarServiceTest {
     @Test
     void returnsSortedArrayOfCarsMatchingStatus() {
         when(repository.findAll()).thenReturn(allAvailableCars);
-        List<PoliceCar> retirevedCars = service.getAvailablePoliceCars("Tilgjengelig");
+        List<PoliceCar> retirevedCars = service.getPoliceCarsMatchingStatus("Tilgjengelig");
         assertThat(retirevedCars).hasSize(4);
         assertThat(retirevedCars.get(0)).isEqualTo(car2);
         assertThat(retirevedCars.get(1)).isEqualTo(availableCar1);
@@ -77,7 +77,7 @@ public class PoliceCarServiceTest {
     @Test
     void filtersOutCarsNotMatchngStatus() {
         when(repository.findAll()).thenReturn(cars);
-        List<PoliceCar> retirevedCars = service.getAvailablePoliceCars("Tilgjengelig");
+        List<PoliceCar> retirevedCars = service.getPoliceCarsMatchingStatus("Tilgjengelig");
         assertThat(retirevedCars).hasSize(2);
         assertThat(retirevedCars.get(0)).isEqualTo(car2);
         assertThat(retirevedCars.get(1)).isEqualTo(car3);
@@ -87,7 +87,7 @@ public class PoliceCarServiceTest {
     @Test
     void returnsEmptyListWhenNoCarMatchesStatus() {
         when(repository.findAll()).thenReturn(List.of());
-        List<PoliceCar> retirevedCars = service.getAvailablePoliceCars("No Matching Status");
+        List<PoliceCar> retirevedCars = service.getPoliceCarsMatchingStatus("No Matching Status");
         assertThat(retirevedCars).isNotNull();
         assertThat(retirevedCars).hasSize(0);
         verify(repository).findAll();
