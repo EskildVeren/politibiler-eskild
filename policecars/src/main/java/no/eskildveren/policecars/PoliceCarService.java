@@ -3,22 +3,25 @@ package no.eskildveren.policecars;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import no.eskildveren.policecars.model.PoliceCar;
+import no.eskildveren.policecars.model.PoliceCarUpdate;
 
 @Service
 public class PoliceCarService {
 
     @Autowired
-    PoliceCarRepository policeCarRepository;
+    PoliceCarRepository repository;
 
     public PoliceCar getPoliceCarById(String id) {
-        return policeCarRepository.findById(id).orElse(null);
+        return repository.findById(id).orElse(null);
     }
 
     public List<PoliceCar> getAvailablePoliceCars(String status) {
-        return policeCarRepository
+        return repository
                 .findAll()
                 .stream()
                 .filter((pc) -> pc.getStatus().equals(status))
@@ -26,12 +29,23 @@ public class PoliceCarService {
                 .toList();
     }
 
-    public void assignPoliceCarMission(String id) {
+    public void assignPoliceCarMission(String id, PoliceCarUpdate update) {
+        PoliceCar car = repository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
+        car.setOppdrag(update.oppdrag());
+
+        // Update to default status if no status is found
+        if (update.status() == null)
+            car.setStatus("I oppdrag");
+        else
+            car.setStatus(update.status());
+
+        repository.save(car);
     }
 
     public void addPoliceCars(List<PoliceCar> policeCars) {
-
-        policeCarRepository.saveAll(policeCars);
+        if (policeCars != null)
+            repository.saveAll(policeCars);
     }
 }
