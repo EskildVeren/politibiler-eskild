@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-const API_URL = "http://localhost:8080/politibiler/?status=Tilgjengelig";
+const API_URL = "http://localhost:8080/politibiler?status=Tilgjengelig";
 
 async function fetchAvailableCars() {
   const res = await fetch(API_URL);
