@@ -33,7 +33,6 @@ public class DataLoader implements CommandLineRunner {
                 PoliceCarResponse.class);
 
         if (policeCars != null) {
-            policeCars.biler().stream().forEach((p) -> System.out.println(p));
             repository.saveAll(policeCars.biler());
         }
     }
