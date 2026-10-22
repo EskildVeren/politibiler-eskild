@@ -6,8 +6,11 @@ Due to the context of this task, this README assumes the reader knows Norwegian.
 
 The application requires JDK 21 installed in order to run
 
-## Getting started
+## Running the application
 
+### Dev mode
+
+The following is how I ran the application during development
 
 Enter the policecars folder  
 `cd policecars`  
@@ -17,6 +20,15 @@ Install system dependencies
 
 Run the Spring Boot application  
 `mvn spring-boot:run`
+
+### Using docker
+
+The following is how to run the application using docker. This was added to make running the application more reporducable, as I want a low chance of technical difficulties during the presentation
+
+Make sure you are in the root of the git repository, same folder as the [docker-compose.yml](docker-compose.yml) file
+
+Run the docker container  
+`docker compose up`
 
 ## API
 
